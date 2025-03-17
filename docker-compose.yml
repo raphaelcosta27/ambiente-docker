@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    restart: unless-stopped
+    volumes:
+      - ./www:/var/www/html
+    command: sh -c "chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && php-fpm"
+    networks:
+      - laravel
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-server
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - laravel
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-database
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: pjap_candidates
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: gseresuser
+      MYSQL_PASSWORD: Gseres@12345
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
