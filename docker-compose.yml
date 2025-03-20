@@ -16,7 +16,7 @@ services:
     container_name: nginx-server
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "82:80"
     volumes:
       - ./www:/var/www/html
       - ./nginx/conf.d:/etc/nginx/conf.d
@@ -33,7 +33,7 @@ services:
       MYSQL_USER: gseresuser
       MYSQL_PASSWORD: Gseres@12345
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./mysql-data:/var/lib/mysql
     networks:
