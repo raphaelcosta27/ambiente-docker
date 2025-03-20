@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build:
@@ -9,7 +7,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./www:/var/www/html
-    command: sh -c "chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && php-fpm"
+    # command: sh -c "sudo chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && php-fpm"
     networks:
       - laravel
 
