@@ -19,13 +19,6 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
 # Instala o Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Criar o grupo e o usuário com UID e GID 1001
-RUN groupadd -g 1001 gruposeres \
-    && useradd -m -u 1001 -g 1001 -s /bin/bash gruposeres \
-    && usermod -aG www-data gruposeres \
-    && echo "gruposeres ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-
 # Definir diretório de trabalho
 WORKDIR /var/www/html
 
@@ -33,11 +26,8 @@ WORKDIR /var/www/html
 RUN npm install -g npm
 
 # Ajustar permissões para que o usuário tenha acesso à pasta
-RUN sudo chown -R gruposeres:www-data /var/www/html \
+RUN sudo chown -R www-data /var/www/html \
     && chmod -R 775 /var/www/html
-
-# Definir o usuário padrão para evitar que os arquivos sejam criados como root
-USER gruposeres
 
 # Expor a porta 9000 para o PHP-FPM
 EXPOSE 9000

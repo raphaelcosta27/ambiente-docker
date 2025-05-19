@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel-app
+    container_name: my-app
     restart: unless-stopped
     volumes:
       - ./www:/var/www/html
@@ -28,12 +28,12 @@ services:
     container_name: mysql-database
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: pjap_candidates
+      MYSQL_DATABASE: DB_NAME
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: gseresuser
-      MYSQL_PASSWORD: Gseres@12345
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./mysql-data:/var/lib/mysql
     networks:

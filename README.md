@@ -15,8 +15,8 @@ Este repositório fornece um ambiente Docker completo para desenvolvimento de ap
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/gruposeres/pjap-docker.git
-   cd pjap-docker
+   git clone https://github.com/raphaelcosta27/ambiente-docker.git
+   cd ambiente-docker
    ```
 
 2. Suba os containers com Docker Compose:
@@ -59,7 +59,7 @@ pjap-docker/
 
 - Acessar o MySQL via CLI:
   ```bash
-  docker exec -it pjap-mysql mysql -u root -p
+  docker exec -it ambiente-mysql mysql -u root -p
   ```
 
 ## ❓ Dúvidas frequentes
