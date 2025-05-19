@@ -1,4 +1,4 @@
-# 🐳 Ambiente Docker - PJAP
+# 🐳 Ambiente Docker
 
 Este repositório fornece um ambiente Docker completo para desenvolvimento de aplicações PHP com MySQL e phpMyAdmin. Ele é ideal para rodar localmente projetos PHP sem necessidade de configurar servidores manualmente.
 
